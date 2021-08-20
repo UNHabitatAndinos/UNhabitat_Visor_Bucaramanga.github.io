@@ -522,11 +522,11 @@ var legends = {
     EMPLEO: {
         title: "Empleo",
         subtitle: "% Personas",
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0 - 36</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>37 - 48</div>', 
+        elem1: '<div><span  style= "color:#1a9641">▉</span>65 - 100</div>',
+        elem2: '<div><span  style= "color:#a6d96a">▉</span>57 - 64</div>', 
         elem3: '<div><span  style= "color:#f4f466">▉</span>49 - 56</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>57 - 64</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>65 - 100</div>',
+        elem4: '<div><span  style= "color:#fdae61">▉</span>37 - 48</div>',
+        elem5: '<div><span  style= "color:#d7191c">▉</span>0 - 36</div>',
         elem6: '',
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
@@ -807,11 +807,11 @@ function setProColor(d) {
                     '#1a9641';
     }
     else if (currentStyle === 'EMPLEO') {
-        return d > 64 ? '#d7191c' :
-            d > 56 ? '#fdae61' :
+        return d > 64 ?  '#1a9641' :
+            d > 56 ? '#a6d96a' :
                 d > 48 ? '#f4f466' :
-                    d > 36 ? '#a6d96a' :
-                    '#1a9641';
+                    d > 36 ? '#fdae61' :
+                   '#d7191c';
     }
     else if (currentStyle === 'BRECHA_D') {
         return d > 3.14 ? '#d7191c' :

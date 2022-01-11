@@ -73,7 +73,7 @@ info.update = function (props) {
         '<b>Espacios públicos, seguridad y recreación </b>' + '<br />' +
         'Proximidad espacio público: ' + props.DxP_EP.toFixed(0) + ' m' + '<br />' +
         'M² per capita de espacio público: ' + props.M2_ESP_PU.toFixed(2) + '<br />' +
-        'Densidad residencial: ' + props.D_POB.toFixed(2) + '<br />' +
+        'Densidad residencial: ' + props.DENS_RESID.toFixed(2) + '<br />' +
         'Tasa de hurtos x 100mil habitantes: ' + props.HURTOS.toFixed(0) + '<br />' +
         'Tasa de homicidios x 100mil habitantes: ' + props.HOMICIDIOS.toFixed(2) + '<br />' +
         'Diversidad usos del suelo: ' + props.MIXTICIDAD.toFixed(2) + '/1.61' +'<br />' + '<br />' +
@@ -339,14 +339,14 @@ var legends = {
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
     },
-    D_POB: {
+    DENS_RESID: {
         title: "Densidad residencial",
-        subtitle: "Población x m2", 
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0.000 - 0.007</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>0.008 - 0.015</div>', 
-        elem3: '<div><span  style= "color:#f4f466">▉</span>0.016 - 0.063</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>0.064 - 0.118</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>0.119 - 0.420</div>',
+        subtitle: "Población/ha", 
+        elem1: '<div><span  style= "color:#a6d96a">▉</span>0 - 149</div>',
+        elem2: '<div><span  style= "color:#1a9641">▉</span>150 - 200</div>', 
+        elem3: '<div><span  style= "color:#f4f466">▉</span>201 - 400</div>',
+        elem4: '<div><span  style= "color:#fdae61">▉</span>401 - 500</div>',
+        elem5: '<div><span  style= "color:#d7191c">▉</span>Mayor 501</div>',
         elem6: '',
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
@@ -438,11 +438,11 @@ var legends = {
     B_E_VIDA: {
         title: "Brecha género esperanza de vida al nacer",
         subtitle: "Relación esperanza de vida al nacer de mujeres y hombres",
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0.62 - 0.98</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>0.99 - 1.03</div>', 
-        elem3: '<div><span  style= "color:#f4f466">▉</span>1.04 - 1.07</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>1.08 - 1.17</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>1.18 - 5.86</div>',
+        elem1: '<div><span  style= "color:#d7191c">▉</span>0.62 - 0.98</div>',
+        elem2: '<div><span  style= "color:#1a9641">▉</span>0.99 - 1.03</div>', 
+        elem3: '<div><span  style= "color:#a6d96a">▉</span>1.04 - 1.07</div>',
+        elem4: '<div><span  style= "color:#f4f466">▉</span>1.08 - 1.17</div>',
+        elem5: '<div><span  style= "color:#fdae61">▉</span>1.18 - 5.86</div>',
         elem6: '',
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
@@ -474,11 +474,11 @@ var legends = {
     Brec_Gen_e: {
         title: "Brecha género años promedio educación",
         subtitle: "Relación años promedio educación de mujeres y hombres", 
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0.00 - 0.88</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>0.89 - 1.04</div>', 
-        elem3: '<div><span  style= "color:#f4f466">▉</span>1.05 - 1.26</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>1.27 - 2.27</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>2.28 - 4.50</div>',
+        elem1: '<div><span  style= "color:#d7191c">▉</span>0.00 - 0.90</div>',
+        elem2: '<div><span  style= "color:#1a9641">▉</span>0.91 - 1.04</div>', 
+        elem3: '<div><span  style= "color:#a6d96a">▉</span>1.05 - 1.26</div>',
+        elem4: '<div><span  style= "color:#f4f466">▉</span>1.27 - 2.27</div>',
+        elem5: '<div><span  style= "color:#fdae61">▉</span>2.28 - 4.50</div>',
         elem6: '',
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
@@ -534,11 +534,11 @@ var legends = {
     BRECHA_D: {
         title: "Brecha de género desempleo",
         subtitle: "Relación desempleo de mujeres y hombres",
-        elem1: '<div><span  style= "color:#1a9641">▉</span>0.00 - 0.31</div>',
-        elem2: '<div><span  style= "color:#a6d96a">▉</span>0.32 - 0.84</div>', 
-        elem3: '<div><span  style= "color:#f4f466">▉</span>0.85 - 1.62</div>',
-        elem4: '<div><span  style= "color:#fdae61">▉</span>1.63 - 3.14</div>',
-        elem5: '<div><span  style= "color:#d7191c">▉</span>3.15 - 10.40</div>',
+        elem1: '<div><span  style= "color:#d7191c">▉</span>0.00 - 0.90</div>',
+        elem2: '<div><span  style= "color:#1a9641">▉</span>0.91 - 1.01</div>', 
+        elem3: '<div><span  style= "color:#a6d96a">▉</span>1.02 - 1.62</div>',
+        elem4: '<div><span  style= "color:#f4f466">▉</span>1.63 - 3.14</div>',
+        elem5: '<div><span  style= "color:#fdae61">▉</span>3.15 - 10.40</div>',
         elem6: '',
         elem7: '',
         elem8: "DANE Censo Nacional Población y Vivienda 2018",
@@ -582,10 +582,10 @@ var legends = {
 }
 
 var indi = L.geoJson(Manzana, {
-    style: legends.D_POB,
+    style: legends.DENS_RESID,
 }).addTo(map);
 
-var currentStyle = 'D_POB';
+var currentStyle = 'DENS_RESID';
 
 manzanas = L.geoJson(Manzana, {
     style: style,
@@ -701,12 +701,12 @@ function setProColor(d) {
                     d > 1.12 ? '#fdae61' :
                     '#d7191c';
     }
-    else if (currentStyle === 'D_POB') {
-        return d > 0.118 ? '#d7191c' :
-            d > 0.060 ? '#fdae61' :
-                d > 0.015 ? '#f4f466' :
-                    d > 0.007 ? '#a6d96a' :
-                    '#1a9641';
+    else if (currentStyle === 'DENS_RESID') {
+        return d > 500 ? '#d7191c' :
+        d > 400? '#fdae61' :
+            d > 200 ? '#f4f466' :
+                d > 149 ? '#1a9641' :
+                '#a6d96a';    
     }
     else if (currentStyle === 'DxP_SALUD') {
         return d > 7500 ? '#d7191c' :
@@ -758,10 +758,10 @@ function setProColor(d) {
                     '#d7191c';
     }
     else if (currentStyle === 'B_E_VIDA') {
-        return d > 1.17 ? '#1a9641' :
-            d > 1.07 ? '#a6d96a' :
-                d > 1.03 ? '#f4f466' :
-                    d > 0.98 ? '#fdae61' :
+        return d > 1.17 ? '#fdae61' :
+            d > 1.07 ? '#f4f466' :
+                d > 1.03 ? '#a6d96a' :
+                    d > 0.98 ? '#1a9641' :
                     '#d7191c';
     }
     else if (currentStyle === 'DxP_BIBLIO') {
@@ -779,11 +779,11 @@ function setProColor(d) {
                     '#1a9641';
     }
     else if (currentStyle === 'Brec_Gen_e') {
-        return d > 2.27 ? '#d7191c' :
-            d > 1.26 ? '#fdae61' :
-                d > 1.04 ? '#f4f466' :
-                    d > 1.88 ? '#a6d96a' :
-                    '#1a9641';
+        return d > 2.27 ? '#fdae61' :
+            d > 1.26 ? '#f4f466' :
+                d > 1.04 ? '#a6d96a' :
+                    d > 0.90? '#1a9641' :
+                    '#d7191c';
     }
     else if (currentStyle === 'DxP_EP') {
         return d > 5000 ? '#d7191c' :
@@ -814,11 +814,11 @@ function setProColor(d) {
                    '#d7191c';
     }
     else if (currentStyle === 'BRECHA_D') {
-        return d > 3.14 ? '#d7191c' :
-            d > 1.62 ? '#fdae61' :
-                d > 0.84 ? '#f4f466' :
-                    d > 0.31 ? '#a6d96a' :
-                    '#1a9641';
+        return d > 3.14 ? '#fdae61' :
+            d > 1.62 ? '#f4f466' :
+                d > 1.01 ? '#a6d96a' :
+                    d > 0.90 ? '#1a9641' :
+                    '#d7191c';
     }
     else if (currentStyle === 'EMPLEO_I') {
         return d > 46 ? '#d7191c' :
@@ -885,7 +885,7 @@ var layersControl = new L.Control.Layers(baseMaps, overlayMaps, {
     collapsed: true,
 });
 map.addControl(layersControl);
-changeIndi({value: 'D_POB'});
+changeIndi({value: 'DENS_RESID'});
 
 function popupText(feature, layer) {
     layer.bindPopup('Municipio ' + feature.properties.MPIO_CNMBR + '<br />')
